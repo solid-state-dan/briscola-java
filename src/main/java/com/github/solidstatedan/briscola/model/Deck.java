@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Manages the sequential collection of cards of a traditional deck (40-card deck).
+ */
 public class Deck {
 
     // FIELDS
     private final List<Card> cards;
 
     // CONSTRUCTOR
+    /**
+     * Initializes a standard briscola deck.
+     */
     public Deck() {
         // A new deck should have 40 cards.
         this.cards = new ArrayList<>(40);
@@ -23,7 +29,10 @@ public class Deck {
     }
 
     // METHODS
-    // Draw a card.
+    /**
+     * Draws and removes the top card from deck.
+     * @return the drawn Card instance.
+     */
     public Card draw() {
 
         // If deck is empty:
@@ -35,7 +44,9 @@ public class Deck {
         return cards.removeLast();
     }
 
-    // How many cards left in the deck.
+    /**
+     * Gets the remaining number of cards left in the deck.
+     */
     public int getSize() {
         return cards.size();
     }
