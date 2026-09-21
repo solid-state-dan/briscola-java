@@ -2,6 +2,9 @@ package com.github.solidstatedan.briscola.model;
 
 /**
  * Represents a playing card in a Briscola game.
+ * Each card carries a {@link Suit}, the face rank value (1-10),
+ * the score points assigned by Briscola rules,
+ * and the strength against other cards of the same suit.
  */
 public class Card {
     private final Suit suit;
@@ -47,18 +50,31 @@ public class Card {
         };
     }
 
+    /**
+     * Gets the card's suit.
+     * @return The {@link Suit} enum associated with this card.
+     */
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * Gets the card's face rank value (1-10).
+     */
     public int getRank() {
         return rank;
     }
 
+    /**
+     * Gets the number of points awarded for capturing this card.
+     */
     public int getPoints() {
         return points;
     }
 
+    /**
+     * Gets an integer (1-10) indicating how powerful this card is against others of the same suit.
+     */
     public int getStrength() {
         return strength;
     }

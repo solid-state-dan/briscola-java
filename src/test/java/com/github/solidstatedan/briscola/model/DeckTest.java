@@ -12,7 +12,7 @@ public class DeckTest {
     private Deck deck;
 
     @BeforeEach
-    public void SetUp() {
+    public void setUp() {
         deck = new Deck();
     }
 
