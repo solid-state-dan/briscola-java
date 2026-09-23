@@ -17,8 +17,8 @@ public class HandTest {
     public void SetUp() {
         hand = new Hand();
         card1 = new Card(Suit.COINS, 10);
-        card1 = new Card(Suit.CLUBS, 1);
-        card1 = new Card(Suit.CUPS, 3);
+        card2 = new Card(Suit.CLUBS, 1);
+        card3 = new Card(Suit.CUPS, 3);
     }
 
     @Test
