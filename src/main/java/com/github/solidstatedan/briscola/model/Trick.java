@@ -78,7 +78,7 @@ public class Trick {
      * @throws IllegalArgumentException If the provided card has not been played yet in this trick.
      */
     public Player getPlayerForCard(Card c) {
-        if (!playedCards.contains(c)) {
+        if (!cardToPlayerMap.containsKey(c)) {
             throw new IllegalArgumentException("Provided card has not been played yet.");
         }
 
