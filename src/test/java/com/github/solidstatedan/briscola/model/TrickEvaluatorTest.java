@@ -32,10 +32,10 @@ public class TrickEvaluatorTest {
         Card card3 = new Card(Suit.COINS, 1);   // Ace      (STRENGTH 10)
         Card card4 = new Card(Suit.COINS, 3);   // Three    (STRENGTH  9)
 
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // 1. NO trump card was played.
         // 2. Lead suit is COINS.
@@ -53,10 +53,10 @@ public class TrickEvaluatorTest {
         Card card3 = new Card(Suit.SWORDS, 1);  // Ace      (STRENGTH 10)
         Card card4 = new Card(Suit.SWORDS, 3);  // Three    (STRENGTH  9)
 
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // 1. NO trump card was played.
         // 2. Lead suit is COINS.
@@ -79,10 +79,10 @@ public class TrickEvaluatorTest {
         Card card3 = new Card(Suit.COINS, 3);   // Three    (STRENGTH  9)
         Card card4 = new Card(Suit.CUPS, 2);    // Two      (STRENGTH  1)
 
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // 1. Lead suit is CUPS
         // 2. Only 1 trump suit card was played: Two of CUPS (card4, played by p4).
@@ -99,10 +99,10 @@ public class TrickEvaluatorTest {
         Card card3 = new Card(Suit.CUPS, 1);   // Ace      (STRENGTH 10)
         Card card4 = new Card(Suit.CUPS, 3);   // Three    (STRENGTH  9)
 
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // 1. Multiple trumps played.
         // 2. Ace of CUPS (card3, played by p3) is the strongest in the trump suit, so they win.
@@ -118,10 +118,10 @@ public class TrickEvaluatorTest {
         Card card3 = new Card(Suit.CUPS, 1);   // Ace      (POINTS 11)
         Card card4 = new Card(Suit.CUPS, 3);   // Three    (POINTS 10)
 
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // Assert total points that go to the winner of this trick.
         assertEquals(25, evaluator.calculateTrickPoints(trick));
@@ -144,9 +144,9 @@ public class TrickEvaluatorTest {
         Card card4 = new Card(Suit.COINS, 4);
 
         // Only 3/4 people have laid down a card in this trick.
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
 
         // Cannot evaluate if trick is still ongoing.
         assertThrows(IllegalArgumentException.class, () -> evaluator.evaluateWinner(trick, Suit.COINS));

@@ -1,6 +1,7 @@
 package com.github.solidstatedan.briscola.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -45,7 +46,16 @@ public class Deck {
     }
 
     /**
-     * Gets the remaining number of cards left in the deck.
+     * Randomly shuffles the cards in this deck.
+     * <p>
+     * Typically called when starting a new game.
+     */
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    /**
+     * Gets the number of cards left in the deck.
      */
     public int getSize() {
         return cards.size();

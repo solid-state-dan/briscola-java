@@ -43,7 +43,7 @@ public class TrickTest {
 
     @Test
     public void testPlayCardSuccessfully() {
-        trick.playCard(p1, card1);
+        trick.playTurn(p1, card1);
 
         // Assert trick size is now 1.
         assertEquals(1, trick.getTrickSize());
@@ -56,10 +56,10 @@ public class TrickTest {
     @Test
     public void testPlayedCardsMaintainChronologicalOrder() {
         // Run a whole trick.
-        trick.playCard(p1, card1);
-        trick.playCard(p2, card2);
-        trick.playCard(p3, card3);
-        trick.playCard(p4, card4);
+        trick.playTurn(p1, card1);
+        trick.playTurn(p2, card2);
+        trick.playTurn(p3, card3);
+        trick.playTurn(p4, card4);
 
         // Assert the chronological order.
         assertEquals(4, trick.getTrickSize());
@@ -71,20 +71,20 @@ public class TrickTest {
 
     @Test
     public void testCannotHaveNullPlayerOrNullCard() {
-        assertThrows(IllegalArgumentException.class, () -> trick.playCard(p1, null));
-        assertThrows(IllegalArgumentException.class, () -> trick.playCard(null, card1));
+        assertThrows(IllegalArgumentException.class, () -> trick.playTurn(p1, null));
+        assertThrows(IllegalArgumentException.class, () -> trick.playTurn(null, card1));
     }
 
     @Test
     public void testCannotPlaySameCardAgain() {
-        trick.playCard(p1, card1);
-        assertThrows(IllegalArgumentException.class, () -> trick.playCard(p1, card1));
+        trick.playTurn(p1, card1);
+        assertThrows(IllegalArgumentException.class, () -> trick.playTurn(p1, card1));
     }
 
     @Test
     public void testCannotPlayAgainInSameTrick() {
-        trick.playCard(p1, card1);
-        assertThrows(IllegalArgumentException.class, () -> trick.playCard(p1, card2));
+        trick.playTurn(p1, card1);
+        assertThrows(IllegalArgumentException.class, () -> trick.playTurn(p1, card2));
     }
 
     @Test

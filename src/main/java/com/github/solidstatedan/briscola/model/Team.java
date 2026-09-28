@@ -50,6 +50,15 @@ public class Team {
         this.points += pointsToAdd;
     }
 
+    /**
+     * Resets the accumulated points for this team to zero.
+     * <p>
+     * Typically called when starting a new game.
+     */
+    public void resetPoints() {
+        this.points = 0;
+    }
+
     // GETTERS
     /**
      * Gets the name identification of the team.

@@ -42,7 +42,7 @@ public class HandTest {
         hand.addCard(card3);
 
         // Play 1 card (card2).
-        Card played = hand.play(1);
+        Card played = hand.playCard(1);
 
         // Played card should be card2.
         assertEquals(card2, played);
@@ -54,6 +54,6 @@ public class HandTest {
     @Test
     public void testPlayCardWithInvalidIndex() {
 
-        assertThrows(IndexOutOfBoundsException.class, () -> hand.play(2), "Card with given index doesn't exist yet");
+        assertThrows(IndexOutOfBoundsException.class, () -> hand.playCard(2), "Card with given index doesn't exist yet");
     }
 }

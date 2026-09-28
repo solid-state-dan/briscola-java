@@ -26,7 +26,7 @@ public class Trick {
      *                                  card has already been played, or if the player
      *                                  has already played its turn in this trick.
      */
-    public void playCard(Player p, Card c) {
+    public void playTurn(Player p, Card c) {
         if (p == null) {
             throw new IllegalArgumentException("Player cannot be null.");
         }

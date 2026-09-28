@@ -1,6 +1,7 @@
 package com.github.solidstatedan.briscola.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,8 +35,17 @@ public class Hand {
      * @return the Card instance at the corresponding index.
      * @throws IndexOutOfBoundsException if the index is out of range.
      */
-    public Card play(int index) {
+    public Card playCard(int index) {
         return cards.remove(index);
+    }
+
+    /**
+     * Removes all cards currently held in this hand.
+     * <p>
+     * Typically called when starting a new game.
+     */
+    public void clear() {
+        cards.clear();
     }
 
     /**
@@ -43,5 +53,14 @@ public class Hand {
      */
     public int getSize() {
         return cards.size();
+    }
+
+    /**
+     * Gets an unmodifiable read-only view of the cards currently in hand.
+     *
+     * @return Read-only list of {@link Card} instances.
+     */
+    public List<Card> getCards() {
+        return Collections.unmodifiableList(cards);
     }
 }
