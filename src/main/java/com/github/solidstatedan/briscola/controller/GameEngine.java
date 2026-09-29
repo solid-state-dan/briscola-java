@@ -24,6 +24,7 @@ public class GameEngine {
     private Suit trumpSuit;
     private int currentPlayerIndex = 0;
     private Trick currentTrick;
+    private Trick lastCompletedTrick;
     private Player lastTrickWinner;
     private boolean isGameOver;
 
@@ -184,6 +185,7 @@ public class GameEngine {
 
         // Save whom won this trick.
         lastTrickWinner = winner;
+        lastCompletedTrick = currentTrick;
 
         // Reset trick, and the winner will start first next trick.
         currentTrick = new Trick();
@@ -303,5 +305,14 @@ public class GameEngine {
      */
     public Team getTeamB() {
         return teamB;
+    }
+
+    /**
+     * Gets the total point value won in the most recently resolved trick.
+     *
+     * @return points awarded in the last trick, or 0 if no trick has been completed yet
+     */
+    public int getLastTrickPoints() {
+        return evaluator.calculateTrickPoints(lastCompletedTrick);
     }
 }

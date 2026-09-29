@@ -1,17 +1,34 @@
 package com.github.solidstatedan;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import com.github.solidstatedan.briscola.cli.ConsoleController;
+import com.github.solidstatedan.briscola.cli.ConsoleView;
+import com.github.solidstatedan.briscola.controller.GameEngine;
+import com.github.solidstatedan.briscola.model.*;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+/**
+ * Application entry point for the Briscola CLI game.
+ */
+public class Main {
+
+    public static void main(String[] args) {
+        // Create Players (1 Human, 3 Easy AIs)
+        Player humanPlayer = new Player("You", PlayerType.HUMAN);
+        Player aiPlayer1 = new Player("Partner (North) (AI)", PlayerType.EASY_AI);
+        Player aiPlayer2 = new Player("Opponent 1 (East), (AI)", PlayerType.EASY_AI);
+        Player aiPlayer3 = new Player("Opponent 2 (West), (AI)", PlayerType.EASY_AI);
+
+        // Group into Teams
+        // Team A: You + AI Partner
+        // Team B: Opponent 1 + Opponent 2
+        Team teamA = new Team("Team Human & Partner", humanPlayer, aiPlayer1);
+        Team teamB = new Team("Team AI Opponents", aiPlayer2, aiPlayer3);
+
+        // Instantiate Model, View, and Controller
+        GameEngine engine = new GameEngine(teamA, teamB);
+        ConsoleView view = new ConsoleView();
+        ConsoleController controller = new ConsoleController(engine, view);
+
+        // Start the game
+        controller.start();
     }
 }

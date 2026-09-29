@@ -78,4 +78,11 @@ public class Card {
     public int getStrength() {
         return strength;
     }
+
+    /**
+     * Gets a string representation of this card.
+     */
+    public String getName() {
+        return rank + " of " + suit;
+    }
 }
